@@ -1,0 +1,26 @@
+.header {
+  align-items: center;
+  border-bottom: 1px solid var(--color-primary);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.item {
+  align-items: center;
+  border-left: 1px solid var(--color-primary);
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-decoration: underline;
+}
+
+.item:first-child {
+  border-left: none;
+}
+
+.item:hover {
+  cursor: pointer;
+}

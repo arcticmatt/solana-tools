@@ -16,12 +16,28 @@ function Row({ name, value }: { name: string; value: any }): JSX.Element {
   );
 }
 
+function DataRow({
+  name,
+  value,
+}: {
+  name: string;
+  value: string;
+}): JSX.Element {
+  return (
+    <>
+      <Body1SemiBold className={styles.name}>{name}</Body1SemiBold>
+      <pre className={styles.value}>{value}</pre>
+    </>
+  );
+}
+
 type Props = {
   bump?: number;
+  data?: string;
   pda: string;
 };
 
-export default function Results({ bump, pda }: Props): JSX.Element {
+export default function Results({ bump, data, pda }: Props): JSX.Element {
   const [accountInfo, setAccountInfo] =
     useState<MaybeUndef<AccountInfo<Buffer>>>(undefined);
   const [isLoading, setIsLoading] = useState(false);
@@ -74,6 +90,7 @@ export default function Results({ bump, pda }: Props): JSX.Element {
           </a>
         }
       />
+      {data != null && <DataRow name="Data" value={data} />}
     </div>
   );
 }

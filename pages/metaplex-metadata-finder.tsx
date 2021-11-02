@@ -15,12 +15,15 @@ import GlobalClass from "src/types/enums/GlobalClass";
 import { programs } from "@metaplex/js";
 import ContainerOuter from "src/components/containers/ContainerOuter";
 import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
+import getConnection from "src/utils/getConnection";
 
 export default function MetaplexMetadataFinder() {
   const [mintAddress, setMintAddress] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<Maybe<string>>(null);
   const [pda, setPda] = useState<Maybe<string>>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [metadata, setMetadata] =
+    useState<Maybe<programs.metadata.Metadata>>(null);
 
   return (
     <ContainerOuter>
@@ -29,7 +32,7 @@ export default function MetaplexMetadataFinder() {
         <div className={styles.containerInner}>
           <HeaderAndDescriptions
             header={<>Metaplex Metadata Finder 🪙</>}
-            description="A tool for finding Metaplex token metadata PDAs."
+            description="A tool for finding Metaplex token metadata PDAs + displaying the metadata."
             help={[
               "Try with 74G1aB9udmzQ8DCL9oSHoFDXWsrSewqayADNtfU8YwUo",
               <>
@@ -68,7 +71,12 @@ export default function MetaplexMetadataFinder() {
                     const pdaAddress = await programs.metadata.Metadata.getPDA(
                       pubkey
                     );
+                    const metadataInner = await programs.metadata.Metadata.load(
+                      getConnection(),
+                      pdaAddress
+                    );
                     setPda(pdaAddress.toString());
+                    setMetadata(metadataInner);
                   } catch (e) {
                     setErrorMessage("Unexpected error");
                   }
@@ -91,9 +99,12 @@ export default function MetaplexMetadataFinder() {
               {errorMessage}
             </Body1>
           )}
-          {pda != null && errorMessage == null && (
+          {pda != null && metadata != null && errorMessage == null && (
             <div className={styles.results}>
-              <Results pda={pda} />
+              <Results
+                data={JSON.stringify(metadata.data, null, 2)}
+                pda={pda}
+              />
             </div>
           )}
           {isLoading && (

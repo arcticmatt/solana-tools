@@ -1,12 +1,5 @@
 .button {
   align-self: stretch;
-  background-color: var(--color-tertiary);
-  border-radius: 8px;
-  border: 1px solid var(--color-secondary);
-}
-
-.button:hover {
-  cursor: pointer;
 }
 
 .containerInner {
@@ -36,10 +29,6 @@
 .help {
   margin-top: 16px;
   max-width: 600px;
-}
-
-.input {
-  padding: 4px 12px;
 }
 
 .inputs {

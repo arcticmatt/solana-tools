@@ -1,5 +1,5 @@
 import ResponsiveContainer from "src/components/ResponsiveContainer";
-import styles from "@/css/Home.module.css";
+import styles from "@/css/pages/PdaFinder.module.css";
 import Header1 from "src/components/text/Header1";
 import ColorClass from "src/types/enums/ColorClass";
 import Body1 from "src/components/text/Body1";
@@ -13,6 +13,7 @@ import Body2 from "src/components/text/Body2";
 import Results from "src/components/Results";
 import LoadingSpinner from "src/components/loading/LoadingSpinner";
 import Header from "src/components/Header";
+import GlobalClass from "src/types/enums/GlobalClass";
 
 export default function PdaFinder() {
   const [programId, setProgramId] = useState<string>("");
@@ -67,7 +68,7 @@ export default function PdaFinder() {
           <div className={styles.inputsAndButton}>
             <div className={styles.inputs}>
               <input
-                className={joinClasses(styles.input, FontClass.Body1)}
+                className={joinClasses(GlobalClass.Input, FontClass.Body1)}
                 onChange={(e) => {
                   setProgramId(e.target.value);
                   setErrorMessage(null);
@@ -77,7 +78,7 @@ export default function PdaFinder() {
                 value={programId}
               />
               <input
-                className={joinClasses(styles.input, FontClass.Body1)}
+                className={joinClasses(GlobalClass.Input, FontClass.Body1)}
                 onChange={(e) => {
                   setSeeds(e.target.value);
                   setErrorMessage(null);
@@ -88,7 +89,11 @@ export default function PdaFinder() {
               />
             </div>
             <button
-              className={joinClasses(styles.button, FontClass.Body1)}
+              className={joinClasses(
+                styles.button,
+                FontClass.Body1,
+                GlobalClass.ButtonPlain
+              )}
               onClick={async () => {
                 setIsLoading(true);
                 try {

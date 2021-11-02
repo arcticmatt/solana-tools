@@ -14,17 +14,17 @@ import Head from "next/head";
 import { AppProps } from "next/app";
 
 const META_DESCRIPTION =
-  "A tool for easily finding Solana PDAs (program derived addresses). In other words, a PDA calculator!";
+  "A set of useful Solana tools, including a PDA finder, Metaplex metadata finder, and more!";
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
       <Head>
-        <title>Solana PDA Finder</title>
+        <title>Solana Tools</title>
         <meta name="description" content={META_DESCRIPTION} />
         <link
           rel="icon"
-          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤔</text></svg>"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠</text></svg>"
         />
       </Head>
       <Component {...pageProps} />

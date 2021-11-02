@@ -20,7 +20,6 @@ function Item({ href, name }: { href: string; name: string }) {
 export default function Header(): JSX.Element {
   useLayoutEffect(() => {
     function highlightFirst() {
-      console.log("resize");
       const flexContainer = document.getElementById("header-flex");
       const flexChildren = flexContainer?.children;
       if (flexChildren == null) {
@@ -31,10 +30,8 @@ export default function Header(): JSX.Element {
       for (const flexChild of flexChildren) {
         // @ts-ignore
         if (flexChild.offsetLeft <= leftPosition) {
-          console.log("add firstColumn");
           flexChild.classList.add("firstColumn");
         } else {
-          console.log("remove firstColumn");
           flexChild.classList.remove("firstColumn");
         }
       }

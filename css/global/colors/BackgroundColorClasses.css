@@ -1,0 +1,84 @@
+.backgroundColorBackgroundOverlay {
+  background-color: var(--color-backgroundOverlay);
+}
+
+.backgroundColorDimmer {
+  background-color: var(--color-dimmer);
+}
+
+.backgroundColorError {
+  background-color: var(--color-error);
+}
+
+.backgroundColorGreen {
+  background-color: var(--color-green);
+}
+
+.backgroundColorGhost {
+  background-color: var(--color-ghost);
+}
+
+.backgroundColorLightBlue {
+  background-color: var(--color-lightBlue);
+}
+
+.backgroundColorLightPink {
+  background-color: var(--color-lightPink);
+}
+
+.backgroundColorLightPurple {
+  background-color: var(--color-lightPurple);
+}
+
+.backgroundColorLightPurpleHover {
+  background-color: var(--color-lightPurpleHover);
+}
+
+.backgroundColorNavy {
+  background-color: var(--color-navy);
+}
+
+.backgroundColorNavyHover {
+  background-color: var(--color-navyHover);
+}
+
+.backgroundColorPink {
+  background-color: var(--color-pink);
+}
+
+.backgroundColorPrimary {
+  background-color: var(--color-primary);
+}
+
+.backgroundColorPurple {
+  background-color: var(--color-purple);
+}
+
+.backgroundColorRed {
+  background-color: var(--color-red);
+}
+
+.backgroundColorRedHover {
+  background-color: var(--color-redHover);
+}
+
+.backgroundColorSecondary {
+  background-color: var(--color-secondary);
+}
+
+.backgroundColorTertiary {
+  background-color: var(--color-tertiary);
+}
+
+.backgroundColorTwitterBlue {
+  background-color: var(--color-twitterBlue);
+}
+
+.backgroundColorWhite {
+  background-color: var(--color-white);
+}
+
+.backgroundColorYellow {
+  background-color: var(--color-yellow);
+}
+

@@ -1,0 +1,23 @@
+:root {
+  --color-backgroundOverlay: rgba(0, 0, 0, 0.3);
+  --color-dimmer: rgba(0, 0, 0, 0.36);
+  --color-error: #ff7777;
+  --color-green: #13bc68;
+  --color-ghost: #c6c6c6;
+  --color-lightBlue: #eaffff;
+  --color-lightPink: #ffdcdc;
+  --color-lightPurple: #ebeaff;
+  --color-lightPurpleHover: #d8d6ff;
+  --color-navy: #1d1989;
+  --color-navyHover: #080561;
+  --color-pink: #ffc8c8;
+  --color-primary: #363636;
+  --color-purple: #3530bf;
+  --color-red: #fd4646;
+  --color-redHover: #dd1111;
+  --color-secondary: #838383;
+  --color-tertiary: #e1e1e1;
+  --color-twitterBlue: #1DA1F2;
+  --color-white: #ffffff;
+  --color-yellow: #ffbb37;
+}

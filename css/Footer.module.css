@@ -1,0 +1,24 @@
+.footer {
+  align-items: center;
+  border-top: 1px solid var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  row-gap: 12px;
+}
+
+.github {
+  height: 20px;
+  width: 20px;
+}
+
+.grayLink {
+  color: var(--color-secondary);
+}
+
+.madeBy {
+  align-items: center;
+  column-gap: 8px;
+  display: inline-flex;
+  justify-content: center;
+}

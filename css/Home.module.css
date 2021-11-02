@@ -1,0 +1,78 @@
+.button {
+  align-self: stretch;
+  background-color: var(--color-tertiary);
+  border-radius: 8px;
+  border: 1px solid var(--color-secondary);
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.containerInner {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-bottom: 100px;
+  padding-top: 100px;
+}
+
+.containerOuter {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.description {
+  margin-top: 24px;
+}
+
+.errorMessage {
+  margin-top: 32px;
+}
+
+.help {
+  margin-top: 16px;
+  max-width: 600px;
+}
+
+.input {
+  padding: 4px 12px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  row-gap: 20px;
+}
+
+.inputsAndButton {
+  align-items: center;
+  column-gap: 12px;
+  display: flex;
+  margin-top: 32px;
+  width: 500px;
+}
+
+.loading {
+  margin-top: 32px;
+}
+
+.results {
+  margin-top: 32px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 640px) {
+  .containerInner {
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+
+  .inputsAndButton {
+    width: 300px;
+  }
+}

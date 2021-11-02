@@ -1,0 +1,36 @@
+.container {
+  background-color: var(--color-tertiary);
+  border-radius: 12px;
+  box-sizing: border-box;
+  column-gap: 24px;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  margin: auto;
+  padding: 24px;
+  row-gap: 24px;
+  width: 800px;
+}
+
+.value {
+  max-width: 500px;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+
+@media only screen and (max-width: 900px) {
+  .container {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .container {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    width: 300px;
+  }
+}

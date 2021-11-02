@@ -1,0 +1,98 @@
+:root {
+  /* body1 */
+  --font-family-body1: "Work Sans", sans-serif;
+  --font-size-body1: 18px;
+  --font-weight-body1: 400;
+  --line-height-body1: 24px;
+
+  /* body2 */
+  --font-family-body2: "Work Sans", sans-serif;
+  --font-size-body2: 14px;
+  --font-weight-body2: 400;
+  --line-height-body2: 18px;
+
+  /* body3 */
+  --font-family-body3: "Work Sans", sans-serif;
+  --font-size-body3: 12px;
+  --font-weight-body3: 400;
+  --line-height-body3: 16px;
+
+  /* header0 (for landing page) */
+  --font-family-header0: "DM Sans", sans-serif;
+  --font-size-header0: 48px;
+  --font-weight-header0: 700;
+
+  /* header1 */
+  --font-family-header1: "DM Sans", sans-serif;
+  --font-size-header1: 36px;
+  --font-weight-header1: 700;
+
+  /* header2 */
+  --font-family-header2: "Space Grotesk", sans-serif;
+  --font-size-header2: 28px;
+  --font-weight-header2: 700;
+  --line-height-header2: 34px;
+
+  /* header3 */
+  --font-family-header3: "Space Grotesk", sans-serif;
+  --font-size-header3: 18px;
+  --font-weight-header3: 700;
+  --line-height-header3: 24px;
+
+  /* smallCaps */
+  --font-family-smallCaps: "Space Grotesk", sans-serif;
+  --font-size-smallCaps: 16px;
+  --font-weight-smallCaps: 700;
+  --letter-spacing-smallCaps: 0.16em;
+  --line-height-smallCaps: 22px;
+}
+
+@media only screen and (max-width: 768px) {
+  :root {
+    /* body1 */
+    --font-family-body1: "Work Sans", sans-serif;
+    --font-size-body1: 16px;
+    --font-weight-body1: 400;
+    --line-height-body1: 22px;
+
+    /* body2 */
+    --font-family-body2: "Work Sans", sans-serif;
+    --font-size-body2: 13px;
+    --font-weight-body2: 400;
+    --line-height-body2: 17px;
+
+    /* body3 */
+    --font-family-body3: "Work Sans", sans-serif;
+    --font-size-body3: 11px;
+    --font-weight-body3: 400;
+    --line-height-body3: 14px;
+
+    /* header0 (for landing page) */
+    --font-family-header0: "DM Sans", sans-serif;
+    --font-size-header0: 34px;
+    --font-weight-header0: 700;
+
+    /* header1 */
+    --font-family-header1: "DM Sans", sans-serif;
+    --font-size-header1: 28px;
+    --font-weight-header1: 700;
+
+    /* header2 */
+    --font-family-header2: "Space Grotesk", sans-serif;
+    --font-size-header2: 24px;
+    --font-weight-header2: 700;
+    --line-height-header2: 32px;
+
+    /* header3 */
+    --font-family-header3: "Space Grotesk", sans-serif;
+    --font-size-header3: 18px;
+    --font-weight-header3: 700;
+    --line-height-header3: 24px;
+
+    /* smallCaps */
+    --font-family-smallCaps: "Space Grotesk", sans-serif;
+    --font-size-smallCaps: 14px;
+    --font-weight-smallCaps: 700;
+    --line-height-smallCaps: 22px;
+  }
+}

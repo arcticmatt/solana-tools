@@ -1,0 +1,84 @@
+.colorBackgroundOverlay {
+  color: var(--color-backgroundOverlay);
+}
+
+.colorDimmer {
+  color: var(--color-dimmer);
+}
+
+.colorError {
+  color: var(--color-error);
+}
+
+.colorGreen {
+  color: var(--color-green);
+}
+
+.colorGhost {
+  color: var(--color-ghost);
+}
+
+.colorLightBlue {
+  color: var(--color-lightBlue);
+}
+
+.colorLightPink {
+  color: var(--color-lightPink);
+}
+
+.colorLightPurple {
+  color: var(--color-lightPurple);
+}
+
+.colorLightPurpleHover {
+  color: var(--color-lightPurpleHover);
+}
+
+.colorNavy {
+  color: var(--color-navy);
+}
+
+.colorNavyHover {
+  color: var(--color-navyHover);
+}
+
+.colorPink {
+  color: var(--color-pink);
+}
+
+.colorPrimary {
+  color: var(--color-primary);
+}
+
+.colorPurple {
+  color: var(--color-purple);
+}
+
+.colorRed {
+  color: var(--color-red);
+}
+
+.colorRedHover {
+  color: var(--color-redHover);
+}
+
+.colorSecondary {
+  color: var(--color-secondary);
+}
+
+.colorTertiary {
+  color: var(--color-tertiary);
+}
+
+.colorTwitterBlue {
+  color: var(--color-twitterBlue);
+}
+
+.colorWhite {
+  color: var(--color-white);
+}
+
+.colorYellow {
+  color: var(--color-yellow);
+}
+

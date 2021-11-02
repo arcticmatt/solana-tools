@@ -14,6 +14,7 @@ import Results from "src/components/Results";
 import LoadingSpinner from "src/components/loading/LoadingSpinner";
 import Header from "src/components/Header";
 import GlobalClass from "src/types/enums/GlobalClass";
+import ContainerOuter from "src/components/containers/ContainerOuter";
 
 export default function PdaFinder() {
   const [programId, setProgramId] = useState<string>("");
@@ -24,7 +25,7 @@ export default function PdaFinder() {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <div className={styles.containerOuter}>
+    <ContainerOuter>
       <Header />
       <ResponsiveContainer>
         <div className={styles.containerInner}>
@@ -148,6 +149,6 @@ export default function PdaFinder() {
         </div>
       </ResponsiveContainer>
       <Footer />
-    </div>
+    </ContainerOuter>
   );
 }

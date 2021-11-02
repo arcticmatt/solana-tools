@@ -15,6 +15,7 @@ import Header from "src/components/Header";
 import GlobalClass from "src/types/enums/GlobalClass";
 import { programs } from "@metaplex/js";
 import Body2 from "src/components/text/Body2";
+import ContainerOuter from "src/components/containers/ContainerOuter";
 
 export default function TokenMetadataFinder() {
   const [mintAddress, setMintAddress] = useState<string>("");
@@ -23,7 +24,7 @@ export default function TokenMetadataFinder() {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <div className={styles.containerOuter}>
+    <ContainerOuter>
       <Header />
       <ResponsiveContainer>
         <div className={styles.containerInner}>
@@ -111,6 +112,6 @@ export default function TokenMetadataFinder() {
         </div>
       </ResponsiveContainer>
       <Footer />
-    </div>
+    </ContainerOuter>
   );
 }

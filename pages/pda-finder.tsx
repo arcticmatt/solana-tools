@@ -1,6 +1,5 @@
 import ResponsiveContainer from "src/components/ResponsiveContainer";
 import styles from "@/css/pages/PdaFinder.module.css";
-import Header1 from "src/components/text/Header1";
 import ColorClass from "src/types/enums/ColorClass";
 import Body1 from "src/components/text/Body1";
 import { useState } from "react";
@@ -9,12 +8,12 @@ import FontClass from "src/types/enums/FontClass";
 import Footer from "src/components/Footer";
 import { PublicKey } from "@solana/web3.js";
 import { Maybe } from "src/types/UtilityTypes";
-import Body2 from "src/components/text/Body2";
 import Results from "src/components/Results";
 import LoadingSpinner from "src/components/loading/LoadingSpinner";
 import Header from "src/components/Header";
 import GlobalClass from "src/types/enums/GlobalClass";
 import ContainerOuter from "src/components/containers/ContainerOuter";
+import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
 
 export default function PdaFinder() {
   const [programId, setProgramId] = useState<string>("");
@@ -29,43 +28,33 @@ export default function PdaFinder() {
       <Header />
       <ResponsiveContainer>
         <div className={styles.containerInner}>
-          <Header1 colorClass={ColorClass.Primary} textAlign="center">
-            Solana PDA Finder 🤔
-          </Header1>
-          <Body1
-            className={styles.description}
-            colorClass={ColorClass.Primary}
-            textAlign="center"
-          >
-            A tool for finding Solana PDAs (program derived addresses).
-          </Body1>
-          <Body2
-            className={styles.help}
-            colorClass={ColorClass.Secondary}
-            textAlign="center"
-          >
-            All seeds (e.g. addresses and string literals) should be entered as
-            strings. They will be automatically converted to buffers. One more
-            thing—don&apos;t enter the bump! It will be calculated
-            automatically.
-          </Body2>
-          <Body2
-            className={styles.help}
-            colorClass={ColorClass.Secondary}
-            textAlign="center"
-          >
-            To test it out, try using
-            <ul
-              style={{
-                marginTop: 2,
-                textAlign: "left",
-                wordBreak: "break-all",
-              }}
-            >
-              <li>Program ID = 2zHwAYnZeN8gip3j6HkU5nvKpraVaFJSXfGLZb4FFWE6</li>
-              <li>Seeds = base_account</li>
-            </ul>
-          </Body2>
+          <HeaderAndDescriptions
+            header={<>Solana PDA Finder 🤔</>}
+            description="A tool for finding Solana PDAs (program derived addresses)."
+            help={[
+              <>
+                All seeds (e.g. addresses and string literals) should be entered
+                as strings. They will be automatically converted to buffers. One
+                more thing—don&apos;t enter the bump! It will be calculated
+                automatically.
+              </>,
+              <>
+                To test it out, try using
+                <ul
+                  style={{
+                    marginTop: 2,
+                    textAlign: "left",
+                    wordBreak: "break-all",
+                  }}
+                >
+                  <li>
+                    Program ID = 2zHwAYnZeN8gip3j6HkU5nvKpraVaFJSXfGLZb4FFWE6
+                  </li>
+                  <li>Seeds = base_account</li>
+                </ul>
+              </>,
+            ]}
+          />
           <div className={styles.inputsAndButton}>
             <div className={styles.inputs}>
               <input

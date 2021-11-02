@@ -1,6 +1,5 @@
 import ResponsiveContainer from "src/components/ResponsiveContainer";
 import styles from "@/css/pages/PdaFinder.module.css";
-import Header1 from "src/components/text/Header1";
 import ColorClass from "src/types/enums/ColorClass";
 import Body1 from "src/components/text/Body1";
 import { useState } from "react";
@@ -14,8 +13,8 @@ import LoadingSpinner from "src/components/loading/LoadingSpinner";
 import Header from "src/components/Header";
 import GlobalClass from "src/types/enums/GlobalClass";
 import { programs } from "@metaplex/js";
-import Body2 from "src/components/text/Body2";
 import ContainerOuter from "src/components/containers/ContainerOuter";
+import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
 
 export default function TokenMetadataFinder() {
   const [mintAddress, setMintAddress] = useState<string>("");
@@ -28,27 +27,19 @@ export default function TokenMetadataFinder() {
       <Header />
       <ResponsiveContainer>
         <div className={styles.containerInner}>
-          <Header1 colorClass={ColorClass.Primary} textAlign="center">
-            Token Metadata Finder 🪙
-          </Header1>
-          <Body1
-            className={styles.description}
-            colorClass={ColorClass.Primary}
-            textAlign="center"
-          >
-            A tool for finding Metaplex token metadata PDAs.
-          </Body1>
-          <Body2
-            className={styles.help}
-            colorClass={ColorClass.Secondary}
-            textAlign="center"
-          >
-            See{" "}
-            <a href="https://github.com/metaplex/js/blob/main/src/programs/metadata/accounts/Metadata.ts#L120-L126">
-              here
-            </a>{" "}
-            for how this gets calculated.
-          </Body2>
+          <HeaderAndDescriptions
+            header={<>Token Metadata Finder 🪙</>}
+            description="A tool for finding Metaplex token metadata PDAs."
+            help={[
+              <>
+                See{" "}
+                <a href="https://github.com/metaplex/js/blob/main/src/programs/metadata/accounts/Metadata.ts#L120-L126">
+                  here
+                </a>{" "}
+                for how this gets calculated.
+              </>,
+            ]}
+          />
           <div className={styles.inputsAndButton}>
             <div className={styles.inputs}>
               <input

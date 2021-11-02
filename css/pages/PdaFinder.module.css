@@ -11,17 +11,8 @@
   padding-top: 100px;
 }
 
-.description {
-  margin-top: 24px;
-}
-
 .errorMessage {
   margin-top: 32px;
-}
-
-.help {
-  margin-top: 16px;
-  max-width: 600px;
 }
 
 .inputs {

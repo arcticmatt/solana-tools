@@ -34,16 +34,25 @@ function DataRow({
 type Props = {
   bump?: number;
   data?: string;
-  pda: string;
+  network?: "devnet" | "mainnet";
+  pda?: string;
 };
 
-export default function Results({ bump, data, pda }: Props): JSX.Element {
+export default function Results({
+  bump,
+  data,
+  network,
+  pda,
+}: Props): JSX.Element {
   const [accountInfo, setAccountInfo] =
     useState<MaybeUndef<AccountInfo<Buffer>>>(undefined);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function run() {
+      if (pda == null) {
+        return;
+      }
       setIsLoading(true);
       const connection = getConnection();
       const accountInfoInner = await connection.getAccountInfo(
@@ -58,39 +67,49 @@ export default function Results({ bump, data, pda }: Props): JSX.Element {
 
   return (
     <div className={styles.container}>
-      <Row name="PDA" value={pda} />
-      {bump != null && <Row name="Bump" value={bump} />}
-      <Row
-        name="Account Exists?"
-        value={
-          isLoading ? (
-            <LoadingSpinner height={22} width={22} />
-          ) : accountInfo == null ? (
-            "Does not exist"
-          ) : (
-            "Exists"
-          )
-        }
-      />
-      <Row
-        name="View on devnet"
-        value={
-          <a href={`https://explorer.solana.com/address/${pda}?cluster=devnet`}>
-            Go to explorer (devnet)
-          </a>
-        }
-      />
-      <Row
-        name="View on mainnet"
-        value={
-          <a
-            href={`https://explorer.solana.com/address/${pda}?cluster=mainnet`}
-          >
-            Go to explorer (mainnet)
-          </a>
-        }
-      />
-      {data != null && <DataRow name="Data" value={data} />}
+      <div className={styles.grid}>
+        {pda != null && <Row name="PDA" value={pda} />}
+        {bump != null && <Row name="Bump" value={bump} />}
+        {pda != null && (
+          <Row
+            name="Account Exists?"
+            value={
+              isLoading ? (
+                <LoadingSpinner height={22} width={22} />
+              ) : accountInfo == null ? (
+                "Does not exist"
+              ) : (
+                "Exists"
+              )
+            }
+          />
+        )}
+        {(network == null || network === "devnet") && (
+          <Row
+            name="View on devnet"
+            value={
+              <a
+                href={`https://explorer.solana.com/address/${pda}?cluster=devnet`}
+              >
+                Go to explorer (devnet)
+              </a>
+            }
+          />
+        )}
+        {(network == null || network === "mainnet") && (
+          <Row
+            name="View on mainnet"
+            value={
+              <a
+                href={`https://explorer.solana.com/address/${pda}?cluster=mainnet`}
+              >
+                Go to explorer (mainnet)
+              </a>
+            }
+          />
+        )}
+        {data != null && <DataRow name="Data" value={data} />}
+      </div>
     </div>
   );
 }

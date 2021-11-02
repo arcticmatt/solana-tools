@@ -19,7 +19,7 @@ export default function Header(): JSX.Element {
     <div className={styles.header}>
       <Item href="/pda-finder" name="PDA Finder" />
       <Item href="/token-metadata-finder" name="Token Metadata Finder" />
-      <Item href="/pda-finder" name="Bar" />
+      <Item href="/token-metadata-display" name="Token Metadata Display" />
     </div>
   );
 }

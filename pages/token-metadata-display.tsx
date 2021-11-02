@@ -8,19 +8,20 @@ import FontClass from "src/types/enums/FontClass";
 import Footer from "src/components/Footer";
 import { PublicKey } from "@solana/web3.js";
 import { Maybe } from "src/types/UtilityTypes";
-import Results from "src/components/Results";
 import LoadingSpinner from "src/components/loading/LoadingSpinner";
 import Header from "src/components/Header";
 import GlobalClass from "src/types/enums/GlobalClass";
 import { programs } from "@metaplex/js";
 import ContainerOuter from "src/components/containers/ContainerOuter";
 import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
+import getConnection from "src/utils/getConnection";
 
-export default function TokenMetadataFinder() {
-  const [mintAddress, setMintAddress] = useState<string>("");
+export default function TokenMetadataDisplay() {
+  const [metadataAddress, setMetdataAddress] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<Maybe<string>>(null);
-  const [pda, setPda] = useState<Maybe<string>>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [metadata, setMetadata] =
+    useState<Maybe<programs.metadata.Metadata>>(null);
 
   return (
     <ContainerOuter>
@@ -28,30 +29,21 @@ export default function TokenMetadataFinder() {
       <ResponsiveContainer>
         <div className={styles.containerInner}>
           <HeaderAndDescriptions
-            header={<>Token Metadata Finder 🪙</>}
-            description="A tool for finding Metaplex token metadata PDAs."
-            help={[
-              "Try with 74G1aB9udmzQ8DCL9oSHoFDXWsrSewqayADNtfU8YwUo",
-              <>
-                See{" "}
-                <a href="https://github.com/metaplex/js/blob/main/src/programs/metadata/accounts/Metadata.ts#L120-L126">
-                  here
-                </a>{" "}
-                for how this gets calculated.
-              </>,
-            ]}
+            header={<>Token Metadata Display 🔍</>}
+            description="A tool for displaying Metaplex token metadata."
+            help={["Try with 8XRPNdKKVmigvHPopWGF8atd8Cz8UKRkFUaYpMLsQRgH"]}
           />
           <div className={styles.inputsAndButton}>
             <div className={styles.inputs}>
               <input
                 className={joinClasses(GlobalClass.Input, FontClass.Body1)}
                 onChange={(e) => {
-                  setMintAddress(e.target.value);
+                  setMetdataAddress(e.target.value);
                   setErrorMessage(null);
                 }}
-                placeholder="Mint address"
+                placeholder="Metadata PDA"
                 type="text"
-                value={mintAddress}
+                value={metadataAddress}
               />
             </div>
             <button
@@ -63,17 +55,18 @@ export default function TokenMetadataFinder() {
               onClick={async () => {
                 setIsLoading(true);
                 try {
-                  const pubkey = new PublicKey(mintAddress);
+                  const pubkey = new PublicKey(metadataAddress);
                   try {
-                    const pdaAddress = await programs.metadata.Metadata.getPDA(
+                    const metadataInner = await programs.metadata.Metadata.load(
+                      getConnection(),
                       pubkey
                     );
-                    setPda(pdaAddress.toString());
+                    setMetadata(metadataInner);
                   } catch (e) {
                     setErrorMessage("Unexpected error");
                   }
                 } catch {
-                  setErrorMessage("Mint address is not a valid address");
+                  setErrorMessage("Metdata PDA is not a valid address");
                 }
 
                 setIsLoading(false);
@@ -91,9 +84,9 @@ export default function TokenMetadataFinder() {
               {errorMessage}
             </Body1>
           )}
-          {pda != null && errorMessage == null && (
+          {metadata != null && errorMessage == null && (
             <div className={styles.results}>
-              <Results pda={pda} />
+              <pre>{JSON.stringify(metadata.data, null, 4)}</pre>
             </div>
           )}
           {isLoading && (

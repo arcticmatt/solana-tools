@@ -27,8 +27,10 @@ export default function HeaderAndDescriptions({
       >
         {description}
       </Body1>
-      {help.map((helpItem) => (
+      {help.map((helpItem, index) => (
         <Body2
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
           className={styles.help}
           colorClass={ColorClass.Secondary}
           textAlign="center"

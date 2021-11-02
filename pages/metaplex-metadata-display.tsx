@@ -16,7 +16,7 @@ import ContainerOuter from "src/components/containers/ContainerOuter";
 import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
 import getConnection from "src/utils/getConnection";
 
-export default function TokenMetadataDisplay() {
+export default function MetaplexMetadataDisplay() {
   const [metadataAddress, setMetdataAddress] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<Maybe<string>>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +29,7 @@ export default function TokenMetadataDisplay() {
       <ResponsiveContainer>
         <div className={styles.containerInner}>
           <HeaderAndDescriptions
-            header={<>Token Metadata Display 🔍</>}
+            header={<>Metaplex Metadata Display 🔍</>}
             description="A tool for displaying Metaplex token metadata."
             help={["Try with 8XRPNdKKVmigvHPopWGF8atd8Cz8UKRkFUaYpMLsQRgH"]}
           />

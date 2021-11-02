@@ -16,7 +16,7 @@ import { programs } from "@metaplex/js";
 import ContainerOuter from "src/components/containers/ContainerOuter";
 import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
 
-export default function TokenMetadataFinder() {
+export default function MetaplexMetadataFinder() {
   const [mintAddress, setMintAddress] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<Maybe<string>>(null);
   const [pda, setPda] = useState<Maybe<string>>(null);
@@ -28,7 +28,7 @@ export default function TokenMetadataFinder() {
       <ResponsiveContainer>
         <div className={styles.containerInner}>
           <HeaderAndDescriptions
-            header={<>Token Metadata Finder 🪙</>}
+            header={<>Metaplex Metadata Finder 🪙</>}
             description="A tool for finding Metaplex token metadata PDAs."
             help={[
               "Try with 74G1aB9udmzQ8DCL9oSHoFDXWsrSewqayADNtfU8YwUo",

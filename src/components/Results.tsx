@@ -17,7 +17,7 @@ function Row({ name, value }: { name: string; value: any }): JSX.Element {
 }
 
 type Props = {
-  bump: number;
+  bump?: number;
   pda: string;
 };
 
@@ -43,7 +43,7 @@ export default function Results({ bump, pda }: Props): JSX.Element {
   return (
     <div className={styles.container}>
       <Row name="PDA" value={pda} />
-      <Row name="Bump" value={bump} />
+      {bump != null && <Row name="Bump" value={bump} />}
       <Row
         name="Account Exists?"
         value={

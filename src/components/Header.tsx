@@ -18,7 +18,7 @@ export default function Header(): JSX.Element {
   return (
     <div className={styles.header}>
       <Item href="/pda-finder" name="PDA Finder" />
-      <Item href="/pda-finder" name="Foo" />
+      <Item href="/token-metadata-finder" name="Token Metadata Finder" />
       <Item href="/pda-finder" name="Bar" />
     </div>
   );

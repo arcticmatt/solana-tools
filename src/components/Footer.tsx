@@ -21,7 +21,7 @@ export default function Footer(): JSX.Element {
       >
         <a
           className={styles.grayLink}
-          href="https://github.com/arcticmatt/solana-pda-calculator"
+          href="https://github.com/arcticmatt/solana-tools"
         >
           View the source code
         </a>

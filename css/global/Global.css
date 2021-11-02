@@ -35,3 +35,7 @@ html {
 .input {
   padding: 4px 12px;
 }
+
+.firstColumn {
+  border-left: none !important;
+}

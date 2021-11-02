@@ -13,8 +13,7 @@
   display: flex;
   flex-grow: 1;
   justify-content: center;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding: 20px 16px;
   text-decoration: underline;
 }
 
@@ -24,4 +23,10 @@
 
 .item:hover {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 640px) {
+  .item {
+    padding: 8px 12px;
+  }
 }

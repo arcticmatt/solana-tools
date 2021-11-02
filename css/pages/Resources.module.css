@@ -1,0 +1,29 @@
+.containerInner {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  padding-bottom: 100px;
+  padding-top: 100px;
+}
+
+.resources {
+  background-color: var(--color-tertiary);
+  border-radius: 12px;
+  column-gap: 24px;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  margin-top: 32px;
+  padding: 24px;
+  row-gap: 24px;
+  text-align: left;
+}
+
+@media only screen and (max-width: 640px) {
+  .containerInner {
+    padding-bottom: 60px;
+    padding-top: 60px;
+  }
+}
+

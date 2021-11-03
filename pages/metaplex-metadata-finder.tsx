@@ -16,8 +16,9 @@ import { programs } from "@metaplex/js";
 import ContainerOuter from "src/components/containers/ContainerOuter";
 import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
 import getConnection from "src/utils/getConnection";
+import HeadContainer from "src/components/containers/HeadContainer";
 
-export default function MetaplexMetadataFinder() {
+function MetaplexMetadataFinder() {
   const [mintAddress, setMintAddress] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<Maybe<string>>(null);
   const [pda, setPda] = useState<Maybe<string>>(null);
@@ -118,3 +119,8 @@ export default function MetaplexMetadataFinder() {
     </ContainerOuter>
   );
 }
+
+export default HeadContainer(
+  MetaplexMetadataFinder,
+  "A tool for finding and displaying Solana Metaplex metadata"
+);

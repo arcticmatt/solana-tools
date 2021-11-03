@@ -15,6 +15,7 @@ import GlobalClass from "src/types/enums/GlobalClass";
 import ContainerOuter from "src/components/containers/ContainerOuter";
 import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import HeadContainer from "src/components/containers/HeadContainer";
 
 const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID: PublicKey = new PublicKey(
   "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
@@ -34,7 +35,7 @@ async function findAssociatedTokenAddress(
   );
 }
 
-export default function AtaFinder() {
+function AtaFinder() {
   const [walletAddress, setWalletAddress] = useState<string>("");
   const [mintAddress, setMintAddress] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<Maybe<string>>(null);
@@ -146,3 +147,8 @@ export default function AtaFinder() {
     </ContainerOuter>
   );
 }
+
+export default HeadContainer(
+  AtaFinder,
+  "A tool for finding Solana Associated Token Account addresses"
+);

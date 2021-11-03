@@ -5,6 +5,7 @@ import Footer from "src/components/Footer";
 import Header from "src/components/Header";
 import ContainerOuter from "src/components/containers/ContainerOuter";
 import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
+import HeadContainer from "src/components/containers/HeadContainer";
 
 function Resource({
   description,
@@ -25,7 +26,7 @@ function Resource({
   );
 }
 
-export default function Resources() {
+function Resources() {
   return (
     <ContainerOuter>
       <Header />
@@ -54,3 +55,8 @@ export default function Resources() {
     </ContainerOuter>
   );
 }
+
+export default HeadContainer(
+  Resources,
+  "A list of useful Solana tools and resources"
+);

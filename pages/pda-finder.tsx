@@ -14,8 +14,9 @@ import Header from "src/components/Header";
 import GlobalClass from "src/types/enums/GlobalClass";
 import ContainerOuter from "src/components/containers/ContainerOuter";
 import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
+import HeadContainer from "src/components/containers/HeadContainer";
 
-export default function PdaFinder() {
+function PdaFinder() {
   const [programId, setProgramId] = useState<string>("");
   const [seeds, setSeeds] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<Maybe<string>>(null);
@@ -141,3 +142,8 @@ export default function PdaFinder() {
     </ContainerOuter>
   );
 }
+
+export default HeadContainer(
+  PdaFinder,
+  "A tool for finding/deriving Solana PDAs (program derived addresses)"
+);

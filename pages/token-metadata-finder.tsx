@@ -16,8 +16,9 @@ import ContainerOuter from "src/components/containers/ContainerOuter";
 import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
 import useTokenMap from "src/hooks/useTokenMap";
 import { TokenInfo } from "@solana/spl-token-registry";
+import HeadContainer from "src/components/containers/HeadContainer";
 
-export default function TokenMetadataFinder() {
+function TokenMetadataFinder() {
   const [mintAddress, setMintAddress] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<Maybe<string>>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -127,3 +128,8 @@ export default function TokenMetadataFinder() {
     </ContainerOuter>
   );
 }
+
+export default HeadContainer(
+  TokenMetadataFinder,
+  "A tool for finding and displaying token metadata (e.g. token symbol and name)"
+);

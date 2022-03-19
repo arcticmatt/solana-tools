@@ -15,8 +15,8 @@ import GlobalClass from "src/types/enums/GlobalClass";
 import { programs } from "@metaplex/js";
 import ContainerOuter from "src/components/containers/ContainerOuter";
 import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
-import getConnection from "src/utils/getConnection";
 import HeadContainer from "src/components/containers/HeadContainer";
+import useSolanaContext from "src/hooks/useSolanaContext";
 
 function MetaplexMetadataFinder() {
   const [mintAddress, setMintAddress] = useState<string>("");
@@ -25,6 +25,7 @@ function MetaplexMetadataFinder() {
   const [isLoading, setIsLoading] = useState(false);
   const [metadata, setMetadata] =
     useState<Maybe<programs.metadata.Metadata>>(null);
+  const { connection } = useSolanaContext();
 
   return (
     <ContainerOuter>
@@ -35,10 +36,10 @@ function MetaplexMetadataFinder() {
             header={<>Metaplex Metadata Finder 🪙</>}
             description="A tool for finding Metaplex token metadata PDAs + displaying the metadata."
             help={[
-              "Try with 74G1aB9udmzQ8DCL9oSHoFDXWsrSewqayADNtfU8YwUo",
+              "Try with 9wpkPsddRdfhUWfrt1rErZCsWSeHHRcN4LRyK7ZgHCkN",
               <>
                 See{" "}
-                <a href="https://github.com/metaplex/js/blob/main/src/programs/metadata/accounts/Metadata.ts#L120-L126">
+                <a href="https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/js/src/accounts/Metadata.ts#L174-L180">
                   here
                 </a>{" "}
                 for how this gets calculated.
@@ -66,6 +67,7 @@ function MetaplexMetadataFinder() {
               )}
               onClick={async () => {
                 setIsLoading(true);
+                setErrorMessage(null);
                 try {
                   const pubkey = new PublicKey(mintAddress);
                   try {
@@ -73,7 +75,7 @@ function MetaplexMetadataFinder() {
                       pubkey
                     );
                     const metadataInner = await programs.metadata.Metadata.load(
-                      getConnection(),
+                      connection,
                       pdaAddress
                     );
                     setPda(pdaAddress.toString());

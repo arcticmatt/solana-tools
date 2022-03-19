@@ -93,6 +93,7 @@ function AtaFinder() {
               )}
               onClick={async () => {
                 setIsLoading(true);
+                setErrorMessage(null);
                 try {
                   // eslint-disable-next-line no-new
                   new PublicKey(walletAddress);

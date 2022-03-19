@@ -8,6 +8,8 @@ export default function getConnection(): Connection {
     return connection;
   }
 
-  connection = new Connection("https://api.devnet.solana.com/");
+  connection = new Connection(
+    "https://patient-proud-dew.solana-mainnet.quiknode.pro/0c5b5dfc389f144e912274604daa0a401b2bf367/"
+  );
   return connection;
 }

@@ -44,10 +44,7 @@ export default function Header(): JSX.Element {
     <div className={styles.header} id="header-flex">
       <Item href="/pda-finder" name="PDA Finder" />
       <Item href="/metaplex-metadata-finder" name="Metaplex Metadata Finder" />
-      <Item
-        href="/metaplex-master-edition-finder"
-        name="Metaplex Master Edition Finder"
-      />
+      <Item href="/metaplex-edition-finder" name="Metaplex Edition Finder" />
       <Item href="/token-metadata-finder" name="Token Metadata Finder" />
       <Item href="/ata-finder" name="ATA Finder" />
       <Item href="/resources" name="Resources" />

@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import LoadingSpinner from "src/components/loading/LoadingSpinner";
 import Body1 from "src/components/text/Body1";
 import Body1SemiBold from "src/components/text/Body1SemiBold";
+import useSolanaContext from "src/hooks/useSolanaContext";
 import { MaybeUndef } from "src/types/UtilityTypes";
-import getConnection from "src/utils/getConnection";
 
 function Row({ name, value }: { name: string; value: any }): JSX.Element {
   return (
@@ -47,6 +47,7 @@ export default function Results({
   const [accountInfo, setAccountInfo] =
     useState<MaybeUndef<AccountInfo<Buffer>>>(undefined);
   const [isLoading, setIsLoading] = useState(false);
+  const { connection } = useSolanaContext();
 
   useEffect(() => {
     async function run() {
@@ -54,7 +55,6 @@ export default function Results({
         return;
       }
       setIsLoading(true);
-      const connection = getConnection();
       const accountInfoInner = await connection.getAccountInfo(
         new PublicKey(pda)
       );
@@ -63,7 +63,7 @@ export default function Results({
     }
 
     run();
-  }, [pda]);
+  }, [connection, pda]);
 
   return (
     <div className={styles.container}>

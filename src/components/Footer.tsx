@@ -1,12 +1,30 @@
 import styles from "@/css/Footer.module.css";
 import TwitterIcon from "src/components/icons/TwitterIcon";
 import Body2 from "src/components/text/Body2";
+import useSolanaContext from "src/hooks/useSolanaContext";
 import ColorClass from "src/types/enums/ColorClass";
 import ColorValue from "src/types/enums/ColorValue";
+import Network from "src/types/enums/Network";
 
 export default function Footer(): JSX.Element {
+  const { setNetwork } = useSolanaContext();
+
   return (
     <div className={styles.footer}>
+      <select
+        name="network"
+        id="network"
+        onChange={(val) => setNetwork(val.target.value as Network)}
+        style={{
+          backgroundColor: "yellow",
+          height: 40,
+          textAlign: "center",
+          width: 200,
+        }}
+      >
+        <option value="mainnet-beta">Mainnet</option>
+        <option value="devnet">Devnet</option>
+      </select>
       <Body2 textAlign="center">
         Made by{" "}
         <span className={styles.madeBy}>

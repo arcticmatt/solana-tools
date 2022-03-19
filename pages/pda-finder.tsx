@@ -87,6 +87,7 @@ function PdaFinder() {
               )}
               onClick={async () => {
                 setIsLoading(true);
+                setErrorMessage(null);
                 try {
                   const pubkey = new PublicKey(programId);
                   try {

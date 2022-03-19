@@ -15,16 +15,19 @@ import GlobalClass from "src/types/enums/GlobalClass";
 import { programs } from "@metaplex/js";
 import ContainerOuter from "src/components/containers/ContainerOuter";
 import HeaderAndDescriptions from "src/components/common/HeaderAndDescriptions";
-import getConnection from "src/utils/getConnection";
 import HeadContainer from "src/components/containers/HeadContainer";
+import useSolanaContext from "src/hooks/useSolanaContext";
 
-function MetaplexMetadataFinder() {
+function MetaplexEditionFinder() {
   const [mintAddress, setMintAddress] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<Maybe<string>>(null);
   const [pda, setPda] = useState<Maybe<string>>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [masterEditionData, setMasterEditionData] =
-    useState<Maybe<programs.metadata.MasterEdition>>(null);
+  const [editionData, setEditionData] =
+    useState<
+      Maybe<programs.metadata.MasterEdition | programs.metadata.Edition>
+    >(null);
+  const { connection } = useSolanaContext();
 
   return (
     <ContainerOuter>
@@ -32,13 +35,13 @@ function MetaplexMetadataFinder() {
       <ResponsiveContainer>
         <div className={styles.containerInner}>
           <HeaderAndDescriptions
-            header={<>Metaplex Master Edition Finder 📕</>}
-            description="A tool for finding Metaplex master edition PDAs."
+            header={<>Metaplex Edition Finder 📕</>}
+            description="A tool for finding Metaplex edition PDAs."
             help={[
-              "Try with 74G1aB9udmzQ8DCL9oSHoFDXWsrSewqayADNtfU8YwUo",
+              "Try with 9wpkPsddRdfhUWfrt1rErZCsWSeHHRcN4LRyK7ZgHCkN (for master edition) or B4tk6Um3rruhcfJySzfFaEGQ68jmXzJdYVAYe336m5L7 (for edition)",
               <>
                 See{" "}
-                <a href="https://github.com/metaplex/js/blob/main/src/programs/metadata/accounts/MasterEdition.ts#L90-L97">
+                <a href="https://github.com/metaplex-foundation/metaplex-program-library/blob/master/token-metadata/js/src/accounts/MasterEdition.ts#L95-L102">
                   here
                 </a>{" "}
                 for how this gets calculated.
@@ -66,18 +69,30 @@ function MetaplexMetadataFinder() {
               )}
               onClick={async () => {
                 setIsLoading(true);
+                setErrorMessage(null);
                 try {
                   const pubkey = new PublicKey(mintAddress);
                   try {
                     const pdaAddress =
                       await programs.metadata.MasterEdition.getPDA(pubkey);
-                    const masterEditionDataInner =
-                      await programs.metadata.MasterEdition.load(
-                        getConnection(),
-                        pdaAddress
-                      );
-                    setPda(pdaAddress.toString());
-                    setMasterEditionData(masterEditionDataInner);
+
+                    try {
+                      const masterEditionData =
+                        await programs.metadata.MasterEdition.load(
+                          connection,
+                          pdaAddress
+                        );
+                      setPda(pdaAddress.toString());
+                      setEditionData(masterEditionData);
+                    } catch (e) {
+                      const editionDataInner =
+                        await programs.metadata.Edition.load(
+                          connection,
+                          pdaAddress
+                        );
+                      setPda(pdaAddress.toString());
+                      setEditionData(editionDataInner);
+                    }
                   } catch (e) {
                     setErrorMessage("Unexpected error");
                   }
@@ -100,10 +115,10 @@ function MetaplexMetadataFinder() {
               {errorMessage}
             </Body1>
           )}
-          {pda != null && masterEditionData != null && errorMessage == null && (
+          {pda != null && editionData != null && errorMessage == null && (
             <div className={styles.results}>
               <Results
-                data={JSON.stringify(masterEditionData.data, null, 2)}
+                data={JSON.stringify(editionData.data, null, 2)}
                 pda={pda}
               />
             </div>
@@ -121,6 +136,6 @@ function MetaplexMetadataFinder() {
 }
 
 export default HeadContainer(
-  MetaplexMetadataFinder,
-  "A tool for finding and displaying Solana Metaplex master editions"
+  MetaplexEditionFinder,
+  "A tool for finding and displaying Solana Metaplex editions"
 );
